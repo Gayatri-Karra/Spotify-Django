@@ -1,0 +1,18 @@
+****Make the refresh token seemless it is giving errors in some cases
+    and check if the user is logged in*****
+
+*****I think you can do classes in the py_clint files insted of 
+    multiple functions***
+
+
+**give Option to add the recommended tracks to playlist and
+make the recommendations page better**
+
+
+***Remove Caching and Do client side data storage*****
+
+
+***A default image if no image is present***
+
+
+***make some changes to the home page*** 

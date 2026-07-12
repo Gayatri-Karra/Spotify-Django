@@ -1,0 +1,64 @@
+{% extends 'data/base.html' %}
+
+{% block title %}Your Playlists{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="text-3xl font-bold inline">Playlists</h1>
+        <button id="toggleFormButton" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full transition-transform transform hover:scale-105">Create Playlist</button>
+    </div>
+
+    <div id="playlistForm" class="hidden mb-3">
+        <form action="" method="post" class="bg-white-800 rounded-lg shadow-md p-4">{% csrf_token %}
+            <h2 class="text-2xl font-semibold mb-4">Create a New Playlist</h2>
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium">Playlist Name:</label>
+                <input type="text" name="name" id="name" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500">
+            </div>
+    
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700 font-medium">Description:</label>
+                <textarea name="description" id="description" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"></textarea>
+            </div>
+    
+            <div class="mb-4">
+                <label for="is_public" class="block text-gray-700 font-medium">Public:</label>
+                <input type="checkbox" name="is_public" id="is_public" class="text-blue-500">
+                <span class="text-gray-600">Make playlist public</span>
+            </div>
+    
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">Create</button>
+        </form>
+    </div>
+    
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for playlist in all_playlists %}
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <img src="{{ playlist.playlist_image }}" alt="{{ playlist.playlist_name }}" class="w-full h-auto mb-4 rounded">
+            <p class="text-xl font-semibold">{{ playlist.playlist_name }}</p>
+            <p class="text-gray-600">Created By: {{ playlist.playlist_owner }}</p>
+            <a href="{{ playlist.playlist_url }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 inline-block mt-2">Visit Playlist Page</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<script>
+    const toggleFormButton = document.getElementById("toggleFormButton")
+    const playlistForm = document.getElementById("playlistForm")
+
+    toggleFormButton.addEventListener('click', () => {
+        if(playlistForm.style.display === 'none' || playlistForm.style.display === ''){
+            playlistForm.style.display = 'block'
+        }
+        else{
+            playlistForm.style.display = 'none';
+        }
+    })
+</script>
+{% endblock %}
+
+

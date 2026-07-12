@@ -1,0 +1,92 @@
+{% extends 'data/base.html' %}
+
+{% block title %} Top Tracks {% endblock %}
+
+
+
+<!-- <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Here are Your Top Tracks</h1>
+
+   
+    <div class="space-x-4 mb-4">
+        <a href="?time_range=short_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Short Term</a>
+        <a href="?time_range=medium_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Medium Term</a>
+        <a href="?time_range=long_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Long Term</a>
+    </div>
+
+   
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for track in all_tracks %}
+        <div class="bg-white rounded-lg shadow-md p-4">
+            <img src="{{ track.song_image }}" alt="{{ track.song_name }}" class="w-full h-auto mb-4 rounded">
+            <p class="text-xl font-semibold">{{ track.song_name }}</p>
+            <p class="text-gray-600">
+                Artists:<br> {% for singer in  track.singer_names %} {{singer}}<br> {% endfor %}
+            </p>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <a href="{{ track.song_url }}" target="_blank">Visit Song Page</a>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div> -->
+
+
+{% block content %}
+<div style="background-color: #1DB954;" class="py-4">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-white mb-4">Here are Your Top Tracks</h1>
+
+        <!-- Filter Buttons -->
+        <div class="space-x-4 mb-4">
+            <a href="?time_range=short_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Short Term</a>
+            <a href="?time_range=medium_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Medium Term</a>
+            <a href="?time_range=long_term" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 inline-block">Long Term</a>
+        </div>
+
+        <!-- Track Table -->
+        <div class="overflow-x-auto">
+            <table class="mx-auto w-4/5 table-auto bg-white text-gray-800" style="border-collapse: collapse; border-spacing: 0;">
+                <thead>
+                    <tr>
+                        <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Image</th>
+                        <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Song Name</th>
+                        <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Artists</th>
+                        <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for track in all_tracks %}
+                    <tr class="hover:bg-blue-200">
+                        <td class="py-1 px-1 text-center">
+                            <img src="{{ track.song_image }}" alt="{{ track.song_name }}" class="w-12 h-12 rounded-full mx-auto">
+                        </td>
+                        <td class="py-1 px-1">{{ track.song_name }}</td>
+                        <td class="py-1 px-1">
+                            <ul>
+                                {% for singer in track.singer_names %}
+                                <li>{{ singer }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td class="py-1 px-1">
+                            <a href="{{ track.song_url }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 inline-block">Visit Song Page</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

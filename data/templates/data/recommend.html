@@ -1,0 +1,105 @@
+{% extends 'data/base.html' %}
+
+{% block title %}Recommendation{% endblock %}
+
+
+{% block content %}
+<!-- Short Term Recommendations -->
+<h2 class="text-2xl font-semibold mb-2">Recommendations based on Short Term Favorites</h2>
+<table class="mx-auto w-4/5 table-auto bg-white text-gray-800" style="border-collapse: collapse; border-spacing: 0;">
+    <thead>
+        <tr>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Image</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Song Name</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Artists</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in short_term %}
+        <tr class="hover:bg-blue-200">
+            <td class="py-1 px-1 text-center">
+                <img src="{{ track.song_image }}" alt="{{ track.song_name }}" class="w-12 h-12 rounded-full mx-auto">
+            </td>
+            <td class="py-1 px-1">{{ track.song_name }}</td>
+            <td class="py-1 px-1">
+                <ul>
+                    {% for singer in track.singer_names %}
+                    <li>{{ singer }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td class="py-1 px-1">
+                <a href="{{ track.song_url }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 inline-block" title="Visit Song Page">Visit Song Page</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Medium Term Recommendations -->
+<h2 class="text-2xl font-semibold mb-2">Recommendations based on Medium Term Favorites</h2>
+<table class="mx-auto w-4/5 table-auto bg-white text-gray-800" style="border-collapse: collapse; border-spacing: 0;">
+    <thead>
+        <tr>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Image</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Song Name</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Artists</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in medium_term %}
+        <tr class="hover:bg-blue-200">
+            <td class="py-1 px-1 text-center">
+                <img src="{{ track.song_image }}" alt="{{ track.song_name }}" class="w-12 h-12 rounded-full mx-auto">
+            </td>
+            <td class="py-1 px-1">{{ track.song_name }}</td>
+            <td class="py-1 px-1">
+                <ul>
+                    {% for singer in track.singer_names %}
+                    <li>{{ singer }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td class="py-1 px-1">
+                <a href="{{ track.song_url }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 inline-block" title="Visit Song Page">Visit Song Page</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Long Term Recommendations -->
+<h2 class="text-2xl font-semibold mb-2">Recommendations based on Long Term Favorites</h2>
+<table class="mx-auto w-4/5 table-auto bg-white text-gray-800" style="border-collapse: collapse; border-spacing: 0;">
+    <thead>
+        <tr>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Image</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Song Name</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Artists</th>
+            <th class="text-left font-semibold py-2 px-2 bg-blue-500 text-white">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in long_term %}
+        <tr class="hover:bg-blue-200">
+            <td class="py-1 px-1 text-center">
+                <img src="{{ track.song_image }}" alt="{{ track.song_name }}" class="w-12 h-12 rounded-full mx-auto">
+            </td>
+            <td class="py-1 px-1">{{ track.song_name }}</td>
+            <td class="py-1 px-1">
+                <ul>
+                    {% for singer in track.singer_names %}
+                    <li>{{ singer }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td class="py-1 px-1">
+                <a href="{{ track.song_url }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 inline-block" title="Visit Song Page">Visit Song Page</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
